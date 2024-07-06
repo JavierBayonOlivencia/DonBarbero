@@ -42,7 +42,7 @@ body {
 }
 
 .noise {
-    background-image: url(./images/noise.png);
+    background-image: url(../images/noise.png);
     opacity: .2;
     mix-blend-mode: overlay;
     background-position: 0 0;
