@@ -6,6 +6,9 @@ const testimonialCard = document.querySelectorAll(".--card");
 
 const notePopUp = document.querySelector(".note");
 
+const sections = document.querySelectorAll("section");
+const navLists = document.querySelectorAll(".item");
+
 /* NAVEGATION TOGGLE */
 toggleBtn.addEventListener("click", function () {
   header.classList.toggle("show");
@@ -45,3 +48,24 @@ testimonialContainer.addEventListener("mousemove", (e) => {
 function popUp() {
   notePopUp.classList.toggle("note__active");
 }
+
+/* NAVEGATION LINK ACTIVE */
+window.addEventListener("scroll", function() {
+  sections.forEach((section) => {
+    let top = window.scrollY;
+    let offset = section.offsetTop - 150;
+    let height = section.offsetHeight;
+    let id = section.getAttribute("id");
+
+    if (top >= offset && top < offset + height) {
+      navLists.forEach((link) => {
+        link.classList.remove("active-page");
+        const nextActiveLink = document.querySelector(".list li a[href*=" + id + "]");
+
+        if (nextActiveLink === null) return;
+        
+        nextActiveLink.classList.add("active-page");
+      });
+    }
+  });
+});
